@@ -3,9 +3,22 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
 from wordcloud import WordCloud
+import os
 
-# Load cleaned data
-df = pd.read_csv(r"C:\Users\Owner\Documents\imdb-movie-analysis\data\cleaned_imdb.csv")
+# Get the absolute path of the current script
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_PATH = os.path.join(BASE_DIR, "../data/cleaned_imdb.csv")
+
+# Load data safely
+if os.path.exists(DATA_PATH):
+    df = pd.read_csv(DATA_PATH)
+else:
+    st.error(f"❌ Error: The dataset file '{DATA_PATH}' was not found. Please check if it exists.")
+
+# Streamlit App Code Below
+st.title("🎬 IMDb Movie Analysis Dashboard")
+st.write(f"Displaying **{len(df)}** movies based on selected filters.") if 'df' in locals() else st.write("⚠️ No data available.")
+
 
 # Set page title and layout
 st.set_page_config(page_title="IMDb Movie Analysis", layout="wide")
