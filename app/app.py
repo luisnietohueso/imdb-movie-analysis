@@ -17,9 +17,6 @@ if os.path.exists(DATA_PATH):
 else:
     st.error(f"❌ Error: The dataset file '{DATA_PATH}' was not found. Please check if it exists.")
 
-# Streamlit App Code Below
-st.title("🎬 IMDb Movie Analysis Dashboard")
-st.write(f"Displaying **{len(df)}** movies based on selected filters.") if 'df' in locals() else st.write("⚠️ No data available.")
 
 
 
