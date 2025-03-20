@@ -5,6 +5,8 @@ import seaborn as sns
 from wordcloud import WordCloud
 import os
 
+# Set page title and layout
+st.set_page_config(page_title="IMDb Movie Analysis", layout="wide")
 # Get the absolute path of the current script
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 DATA_PATH = os.path.join(BASE_DIR, "../data/cleaned_imdb.csv")
@@ -20,8 +22,6 @@ st.title("🎬 IMDb Movie Analysis Dashboard")
 st.write(f"Displaying **{len(df)}** movies based on selected filters.") if 'df' in locals() else st.write("⚠️ No data available.")
 
 
-# Set page title and layout
-st.set_page_config(page_title="IMDb Movie Analysis", layout="wide")
 
 # Sidebar filters
 st.sidebar.header("🔍 Filter Movies")
